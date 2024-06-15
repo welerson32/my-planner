@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.page {
+  display: table;
+  height: 100%;
+  width: 100%;
+
+  &__row {
+    display: table-row;
+
+    .nav {
+      width: 230px;
+      display: table-cell;
+      vertical-align: top;
+      height: 100%;
+    }
+
+    .main {
+      display: table-cell;
+      vertical-align: top;
+      padding: 0 2rem;
+    }
+  }
+}
