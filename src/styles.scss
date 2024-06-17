@@ -4,17 +4,12 @@
 @import "primeicons/primeicons.css";
 //----------------------------------------------------------------------------------------------
 
-//Main body configurations to make de sidebar wrap works.
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+//Configurations to make the main body and sidebar wrap works.
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 .page {
   display: table;
@@ -32,9 +27,12 @@ body {
     }
 
     .main {
+      height: 100%;
+      overflow-y: scroll;
       display: table-cell;
+      flex-wrap: wrap;
       vertical-align: top;
-      padding: 0 2rem;
+      padding: 0 0rem;
     }
   }
 }

@@ -1,4 +1,7 @@
-export const Mock = [
+import { Board } from "./BoardModel";
+import { Task } from "./TaskModel";
+
+export const Mock: Board[] = [
   {
     "id": "123e4567-e89b-12d3-a456-426614174001",
     "name": "Teste 1",
@@ -78,7 +81,7 @@ export const Mock = [
     ]
   },
   {
-    "id": "123e4567-e89b-12d3-a456-426614174001",
+    "id": "123e4567-e89b-12d3-a456-426614174002",
     "name": "Teste 2",
     "tasks": [
       {

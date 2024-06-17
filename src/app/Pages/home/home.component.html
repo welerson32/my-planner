@@ -1,3 +1,28 @@
-<p>
-  home works!
-</p>
+<body>
+  <div class="main-container">
+    <h1>My Boards</h1>
+    <div class="board-grid">
+      <p-card
+        *ngFor="let board of boardsMock"
+        header="{{ board.name }}"
+        subheader="Tarefas: {{ board.tasks.length }}"
+        [style]="{ width: '100%', height: '100%' }"
+      >
+        <ng-template pTemplate="footer">
+          <div class="footer-buttons">
+            <p-button
+              label="Open"
+              [style]="{ width: '100%' }"
+              (click)="goToBoard(board.id)"
+            />
+            <p-button
+              label="Edit"
+              severity="secondary"
+              [style]="{ width: '100%' }"
+            />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</body>

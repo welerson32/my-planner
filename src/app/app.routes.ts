@@ -5,5 +5,5 @@ import { BoardComponent } from './Pages/board/board.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //default route
   { path: 'home', component: HomeComponent },
-  { path: 'board', component: BoardComponent },
+  { path: 'board/:id', component: BoardComponent },
 ];

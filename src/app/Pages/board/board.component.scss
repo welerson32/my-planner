@@ -4,16 +4,20 @@ body {
   padding: 5rem;
 }
 
-.main-container {
-  color: white;
-}
-
-.board-grid {
+.status-grid {
   grid-row-start: auto;
   padding: 1rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.task-grid {
+  grid-row-start: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .footer-buttons {

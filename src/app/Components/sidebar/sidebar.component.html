@@ -8,11 +8,14 @@
 
   <div class="boards">
     <h3>Boards</h3>
-    <div *ngFor="let board of boardsMock">
-      <p-button label="{{board.name}}" [text]="true" />
+    <div class="menu-options" *ngFor="let board of boardsMock">
+      <p-button
+        label="{{ board.name }}"
+        [text]="true"
+        (click)="goToBoard(board.id)"
+      />
       <p-divider />
     </div>
     <p-button icon="pi pi-plus" [outlined]="true" severity="secondary" />
   </div>
-
 </body>
