@@ -1,3 +1,18 @@
-<p>
-  sidebar works!
-</p>
+<body>
+  <div class="header">
+    <div>
+      <h1>MyPlanner</h1>
+      <h4>Let's start organize!</h4>
+    </div>
+  </div>
+
+  <div class="boards">
+    <h3>Boards</h3>
+    <div *ngFor="let board of boardsMock">
+      <p-button label="{{board.name}}" [text]="true" />
+      <p-divider />
+    </div>
+    <p-button icon="pi pi-plus" [outlined]="true" severity="secondary" />
+  </div>
+
+</body>
