@@ -7,7 +7,7 @@ import { Board } from '../../Models/BoardModel';
 @Injectable({
   providedIn: 'root'
 })
-export class BoardsServiceService {
+export class BoardsService {
 
 constructor(
   private http: HttpClient

@@ -7,7 +7,7 @@ import { Task } from '../../Models/TaskModel';
 @Injectable({
   providedIn: 'root'
 })
-export class TasksServiceService {
+export class TasksService {
 
   constructor(
     private http: HttpClient

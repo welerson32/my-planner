@@ -3,7 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { HomeModule } from './Pages/home/home.module';
 import { SidebarModule } from './Components/sidebar/sidebar.module';
 import { BoardModule } from './Pages/board/board.module';
-import { BoardsServiceService } from './Services/BoardsService/boards-service.service';
+import { BoardsService } from './Services/BoardsService/boards-service.service';
+import { TasksService } from './Services/TasksService/tasks-service.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { BoardsServiceService } from './Services/BoardsService/boards-service.se
     SidebarModule,
     BoardModule,
   ],
-  providers: [BoardsServiceService],
+  providers: [BoardsService, TasksService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
