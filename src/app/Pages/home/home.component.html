@@ -4,7 +4,7 @@
     <div class="board-grid">
       <p-card
         *ngFor="let board of boardsMock"
-        header="{{ board.name }}"
+        header="{{ board.boardName }}"
         subheader="Tarefas: {{ board.tasks.length }}"
         [style]="{ width: '100%', height: '100%' }"
       >

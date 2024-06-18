@@ -1,8 +1,9 @@
 <body>
-  <h1>{{this.board?.name}}</h1>
+  <h1></h1>
   <div>
     <div class="status-grid">
       <div class="task-grid">
+        <h1>Pendente</h1>
         <p-card
           *ngFor="let task of board?.tasks"
           header="{{ task.title }}"
@@ -25,6 +26,7 @@
         </p-card>
       </div>
       <div class="task-grid">
+        <h1>Em Progresso</h1>
         <p-card
           *ngFor="let task of board?.tasks"
           header="{{ task.title }}"
@@ -47,6 +49,7 @@
         </p-card>
       </div>
       <div class="task-grid">
+        <h1>Concluída</h1>
         <p-card
           *ngFor="let task of board?.tasks"
           header="{{ task.title }}"

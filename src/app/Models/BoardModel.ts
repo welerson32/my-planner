@@ -2,6 +2,6 @@ import { Task } from "./TaskModel"
 
 export interface Board {
   id: string
-  name: string
+  boardName: string
   tasks: Task[]
 }

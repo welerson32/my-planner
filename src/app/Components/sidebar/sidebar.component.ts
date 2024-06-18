@@ -9,15 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  boardsMock: Board[] = Mock;
+  boardName: string = ''
+  boards: Board[] = Mock;
+  visible: boolean = false;
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
-  goToBoard(id: string) {
-    console.log(id);
+  logName() {
+    console.log(this.boardName);
+    this.visible = false;
+    this.boardName = ''
+  }
 
+  showDialog() {
+      this.visible = true;
+  }
+
+  goToBoard(id: string) {
     this.router.navigate([`board`, id]);
   }
 }

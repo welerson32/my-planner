@@ -8,14 +8,28 @@
 
   <div class="boards">
     <h3>Boards</h3>
-    <div class="menu-options" *ngFor="let board of boardsMock">
+    <div class="menu-options" *ngFor="let board of boards">
       <p-button
-        label="{{ board.name }}"
+        label="{{ board.boardName }}"
         [text]="true"
         (click)="goToBoard(board.id)"
       />
       <p-divider />
     </div>
-    <p-button icon="pi pi-plus" [outlined]="true" severity="secondary" />
+    <p-button icon="pi pi-plus" [outlined]="true" severity="secondary" (click)="showDialog()" />
+  </div>
+
+  <div class="card flex justify-content-center">
+    <p-dialog header="Create Board" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+      <div class="flex align-items-center gap-3 mb-3">
+          <label for="boardname" class="font-semibold w-6rem">Board Name</label>
+          <br>
+          <input pInputText id="boardname" [(ngModel)]="this.boardName" class="flex-auto" autocomplete="off" />
+      </div>
+      <div class="flex justify-content-end gap-2">
+          <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+          <p-button label="Save" (click)="logName()" />
+      </div>
+  </p-dialog>
   </div>
 </body>
