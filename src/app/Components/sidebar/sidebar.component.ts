@@ -10,6 +10,7 @@ import { Message } from 'primeng/api';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  savingBoard: boolean = false;
   loadingList: boolean = false;
   messages!: Message[];
   boardName: string = '';
@@ -41,16 +42,19 @@ export class SidebarComponent implements OnInit {
 
   //Call Boards Service to create a new service.
   async createBoard() {
+    this.savingBoard = true;
     (await this._boardService.createBoard(this.boardName)).subscribe({
       next: (res) => {
         this.loadBoards();
         this.visible = false;
+        this.savingBoard = false;
         this.boardName = '';
         this.messages = [
           { severity: 'success', detail: 'Board created successfully!' },
         ];
       },
       error: (erro) => {
+        this.boardName = '';
         this.messages = [
           { severity: 'error', detail: 'Error creating boards!' },
         ];
