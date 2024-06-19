@@ -5,11 +5,13 @@ import { SidebarModule } from './Components/sidebar/sidebar.module';
 import { BoardModule } from './Pages/board/board.module';
 import { BoardsService } from './Services/BoardsService/boards-service.service';
 import { TasksService } from './Services/TasksService/tasks-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    HttpClientModule,
     RouterOutlet,
     HomeModule,
     SidebarModule,

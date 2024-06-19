@@ -4,6 +4,11 @@ body {
   padding: 1.5rem;
 }
 
+.alert {
+  position: absolute;
+  left: 80%;
+}
+
 .header {
   color: rgb(96, 96, 96);
   height: 10rem;
@@ -23,7 +28,7 @@ body {
 //----------------------------------------------------------------------------------------------
 
 //PrimeNG components customization to fit the design
-:host ::ng-deep .p-button {
+:host ::ng-deep .boards .p-button {
   margin-top: 0.5rem;
   padding: 0.5rem;
   width: 100%;

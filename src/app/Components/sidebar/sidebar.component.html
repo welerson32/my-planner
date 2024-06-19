@@ -1,4 +1,14 @@
 <body>
+  <!-- Alert div -->
+  <div class="alert">
+    <p-messages
+      [(value)]="messages"
+      [enableService]="false"
+      [closable]="true"
+    />
+  </div>
+
+  <!-- Header -->
   <div class="header">
     <div>
       <h1>MyPlanner</h1>
@@ -6,30 +16,59 @@
     </div>
   </div>
 
+  <!-- Board list -->
   <div class="boards">
     <h3>Boards</h3>
-    <div class="menu-options" *ngFor="let board of boards">
-      <p-button
-        label="{{ board.boardName }}"
-        [text]="true"
-        (click)="goToBoard(board.id)"
-      />
-      <p-divider />
+    <!-- Progress spinner -->
+    <div *ngIf="loadingList">
+      <p-progressSpinner ariaLabel="loading" />
     </div>
-    <p-button icon="pi pi-plus" [outlined]="true" severity="secondary" (click)="showDialog()" />
+    <div *ngIf="!loadingList">
+      <div class="menu-options" *ngFor="let board of boards">
+        <p-button
+          label="{{ board.boardName }}"
+          [text]="true"
+          (click)="goToBoard(board.id)"
+        />
+        <p-divider />
+      </div>
+    </div>
+    
+    <p-button
+      icon="pi pi-plus"
+      [outlined]="true"
+      severity="secondary"
+      (click)="showDialog()"
+    />
   </div>
 
+  <!-- Dialog div -->
   <div class="card flex justify-content-center">
-    <p-dialog header="Create Board" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <p-dialog
+      header="Create Board"
+      [modal]="true"
+      [(visible)]="visible"
+      [style]="{ width: '30rem' }"
+    >
       <div class="flex align-items-center gap-3 mb-3">
-          <label for="boardname" class="font-semibold w-6rem">Board Name</label>
-          <br>
-          <input pInputText id="boardname" [(ngModel)]="this.boardName" class="flex-auto" autocomplete="off" />
+        <label for="boardname" class="font-semibold w-6rem">Board Name</label>
+        <input
+          pInputText
+          id="boardname"
+          [(ngModel)]="this.boardName"
+          class="flex-auto"
+          autocomplete="off"
+        />
       </div>
       <div class="flex justify-content-end gap-2">
-          <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-          <p-button label="Save" (click)="logName()" />
+        <p-button
+          label="Cancel"
+          [outlined]="true"
+          severity="secondary"
+          (click)="cleanField()"
+        />
+        <p-button label="Create" (click)="createBoard()" />
       </div>
-  </p-dialog>
+    </p-dialog>
   </div>
 </body>

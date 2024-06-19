@@ -5,30 +5,40 @@ import { environment } from '../../../environments/environment';
 import { Board } from '../../Models/BoardModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoardsService {
+  constructor(private http: HttpClient) {}
 
-constructor(
-  private http: HttpClient
-) { }
+  async getAllBoards(): Promise<Observable<Board[]>> {
+    return this.http.get<Board[]>(`${environment.MOCK_API_URL}/boards`);
+  }
 
-getBoards(): Observable<Board[]> {
-  return this.http.get<Board[]>(`${environment.MOCK_API_URL}/boards`);
-}
+  async getBoard(boardId: number): Promise<Observable<Board[]>> {
+    return this.http.get<Board[]>(`${environment.MOCK_API_URL}/boards/${boardId}`);
+  }
 
-createBoard(board: Board): Observable<Board> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post<Board>(`${environment.MOCK_API_URL}/boards`, board, { headers });
-}
+  async createBoard(boardName: string): Promise<Observable<Board>> {
+    const body = { boardName: boardName };
 
-updateBoard(board: Board): Observable<Board> {
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.put<Board>(`${environment.MOCK_API_URL}/boards/${board.id}`, board, { headers });
-}
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<Board>(`${environment.MOCK_API_URL}/boards`, body, {
+      headers,
+    });
+  }
 
-deleteBoard(boardId: number): Observable<Board> {
-  return this.http.delete<Board>(`${environment.MOCK_API_URL}/boards/${boardId}`);
-}
+  async updateBoard(board: Board): Promise<Observable<Board>> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put<Board>(
+      `${environment.MOCK_API_URL}/boards/${board.id}`,
+      board,
+      { headers }
+    );
+  }
 
+  async deleteBoard(boardId: number): Promise<Observable<Board>> {
+    return this.http.delete<Board>(
+      `${environment.MOCK_API_URL}/boards/${boardId}`
+    );
+  }
 }
