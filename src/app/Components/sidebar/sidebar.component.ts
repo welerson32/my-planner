@@ -40,21 +40,20 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  //Call Boards Service to create a new service.
+  //Call Boards Service to create a new board.
   async createBoard() {
     this.savingBoard = true;
     (await this._boardService.createBoard(this.boardName)).subscribe({
       next: (res) => {
         this.loadBoards();
-        this.visible = false;
-        this.savingBoard = false;
-        this.boardName = '';
+        this.resetFields();
+        this.goToHome();
         this.messages = [
           { severity: 'success', detail: 'Board created successfully!' },
         ];
       },
       error: (erro) => {
-        this.boardName = '';
+        this.resetFields();
         this.messages = [
           { severity: 'error', detail: 'Error creating boards!' },
         ];
@@ -69,13 +68,14 @@ export class SidebarComponent implements OnInit {
   }
 
   //Clean dialog text field
-  cleanField() {
+  resetFields() {
     this.visible = false;
+    this.savingBoard = false;
     this.boardName = '';
   }
 
   //Navigate to selected board.
-  goToBoard(id: string) {
+  goToBoard(id: number) {
     this.router.navigate([`board`, id]);
   }
 

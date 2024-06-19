@@ -50,9 +50,13 @@
       [(visible)]="visible"
       [style]="{ width: '30rem' }"
     >
+
+    <!-- Progress spinner -->
     <div class="card flex justify-content-center" *ngIf="savingBoard">
       <p-progressSpinner styleClass="w-3rem h-3rem" ariaLabel="loading" />
     </div>
+
+      <!-- Dialog content -->
       <div *ngIf="!savingBoard">
         <div class="flex align-items-center gap-3 mb-3">
           <label for="boardname" class="font-semibold w-6rem">Board Name</label>
@@ -69,7 +73,7 @@
             label="Cancel"
             [outlined]="true"
             severity="secondary"
-            (click)="cleanField()"
+            (click)="resetFields()"
           />
           <p-button label="Create" (click)="createBoard()" />
         </div>

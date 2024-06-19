@@ -9,7 +9,7 @@ import { Board } from '../../Models/BoardModel';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-  @Input() id:string | undefined;
+  @Input() id!:number;
 
   board: Board | undefined;
 

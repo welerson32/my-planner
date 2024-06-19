@@ -3,7 +3,7 @@ import { Task } from "./TaskModel";
 
 export const Mock: Board[] = [
   {
-    "id": "123e4567-e89b-12d3-a456-426614174001",
+    "id": 1,
     "boardName": "Teste 1",
     "tasks": [
       {
@@ -81,7 +81,7 @@ export const Mock: Board[] = [
     ]
   },
   {
-    "id": "123e4567-e89b-12d3-a456-426614174002",
+    "id": 2,
     "boardName": "Teste 2",
     "tasks": [
       {

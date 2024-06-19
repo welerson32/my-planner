@@ -1,11 +1,10 @@
 //General style configs to page Home
 body {
-  background-color: #7cbfe3;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #e9e5cd;
+  color: rgb(96, 96, 96);
   padding: 5rem;
-}
-
-.main-container {
-  color: white;
 }
 
 .board-grid {
@@ -16,9 +15,4 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.footer-buttons {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 //----------------------------------------------------------------------------------------------
