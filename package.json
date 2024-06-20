@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/my-planner/stats.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
