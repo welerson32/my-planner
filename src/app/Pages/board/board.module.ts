@@ -13,6 +13,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { ChipModule } from 'primeng/chip';
+import { BoardRoutingModule } from './board-routing.module';
+import { ConfirmationService } from 'primeng/api';
 
 
 
@@ -31,8 +33,10 @@ import { ChipModule } from 'primeng/chip';
     DialogModule,
     ButtonModule,
     CardModule,
+    BoardRoutingModule,
     CommonModule
   ],
+  providers: [ConfirmationService],
   declarations: [BoardComponent]
 })
 export class BoardModule { }

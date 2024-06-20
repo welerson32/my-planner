@@ -10,6 +10,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ConfirmationService } from 'primeng/api';
     DialogModule,
     ButtonModule,
     CardModule,
+    HomeRoutingModule,
     CommonModule
   ],
   providers: [ConfirmationService],
