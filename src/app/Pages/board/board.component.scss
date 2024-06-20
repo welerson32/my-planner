@@ -1,9 +1,14 @@
 //General style configs to page Home
 body {
   height: 100%;
+  overflow-y: auto;
   background-color: #e9e5cd;
-  color: white;
+  color: 	rgb(96, 96, 96);
   padding: 5rem;
+}
+
+.title {
+  max-width: 60rem;
 }
 
 .status-grid {
@@ -14,17 +19,102 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.task-grid {
+.pending-task-column {
+  height: fit-content;
+  background-color: white;
+  border-radius: 1rem;
   grid-row-start: auto;
   padding: 1rem;
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+
+  h1 {
+    margin-left: 1rem;
+  }
+}
+.progress-task-column {
+  height: fit-content;
+  background-color: white;
+  border-radius: 1rem;
+  grid-row-start: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+
+  h1 {
+    margin-left: 1rem;
+  }
+}
+.done-task-column {
+  height: fit-content;
+  background-color: white;
+  border-radius: 1rem;
+  grid-row-start: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+
+  h1 {
+    margin-left: 1rem;
+  }
 }
 
-.footer-buttons {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.dialog {
+  h3 {
+    margin: 0 0rem;
+  }
 }
+
+.footer-button-card {
+  width: fit-content;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+//----------------------------------------------------------------------------------------------
+
+//PrimeNG components customization to fit the design
+:host ::ng-deep .pending-task-column .p-card {
+  border-radius: 1rem;
+  background-color: rgb(255, 176, 176);
+  .p-card-content {
+    padding: 0rem;
+  }
+  & .p-chip {
+    background-color: white;
+    color: rgb(96, 96, 96);
+  }
+}
+
+:host ::ng-deep .progress-task-column .p-card {
+  border-radius: 1rem;
+  background-color: rgb(176, 237, 255);
+  .p-card-content {
+    padding: 0rem;
+  }
+  & .p-chip {
+    background-color: white;
+    color: rgb(96, 96, 96);
+  }
+}
+
+:host ::ng-deep .done-task-column .p-card {
+  border-radius: 1rem;
+  background-color: rgb(208, 255, 177);
+  .p-card-content {
+    padding: 0rem;
+  }
+  & .p-chip {
+    background-color: white;
+    color: rgb(96, 96, 96);
+  }
+}
+
 //----------------------------------------------------------------------------------------------

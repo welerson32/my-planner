@@ -5,3 +5,9 @@ export interface Board {
   boardName: string
   tasks: Task[]
 }
+
+export const EmptyBoard = {
+  id: 0,
+  boardName: '',
+  tasks: []
+}

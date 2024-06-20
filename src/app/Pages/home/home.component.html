@@ -19,7 +19,6 @@
 
     <!-- Boards grid div -->
     <div *ngIf="!loadingList" class="board-grid">
-
       <!-- Board cards -->
       <p-card
         *ngFor="let board of boards"
@@ -29,7 +28,12 @@
       >
         <ng-template pTemplate="footer">
           <div class="flex gap-3 mt-1">
-            <p-button label="Open" (click)="goToBoard(board.id)" />
+            <p-button
+              label="Open"
+              severity="secondary"
+              [outlined]="true"
+              (click)="goToBoard(board.id)"
+            />
             <p-button
               icon="pi pi-pencil"
               severity="secondary"
@@ -73,8 +77,8 @@
 
       <!-- Dialog content -->
       <div *ngIf="!savingBoard">
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="boardname" class="font-semibold w-6rem">Board Name</label>
+        <div class="flex flex-column gap-3 mb-3">
+          <label for="boardname" class="font-semibold">Board Name</label>
           <input
             pInputText
             id="boardname"

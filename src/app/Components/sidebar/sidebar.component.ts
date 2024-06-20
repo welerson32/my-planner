@@ -76,7 +76,9 @@ export class SidebarComponent implements OnInit {
 
   //Navigate to selected board.
   goToBoard(id: number) {
-    this.router.navigate([`board`, id]);
+    this.router.navigate([`board`, id]).then(() => {
+      window.location.reload();
+    });
   }
 
   //Navigate to HomePage.

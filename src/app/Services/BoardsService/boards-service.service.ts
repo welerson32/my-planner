@@ -16,8 +16,8 @@ export class BoardsService {
   }
 
   //Get board by id.
-  async getBoard(boardId: number): Promise<Observable<Board[]>> {
-    return this.http.get<Board[]>(`${environment.MOCK_API_URL}/boards/${boardId}`);
+  async getBoard(boardId: number): Promise<Observable<Board>> {
+    return this.http.get<Board>(`${environment.MOCK_API_URL}/boards/${boardId}`);
   }
 
   //Create new board.

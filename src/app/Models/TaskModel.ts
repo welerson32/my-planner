@@ -1,8 +1,8 @@
 export interface Task {
-  id: string
-  boardId: string
+  id?: number
+  boardId?: number
   title: string
   desc: string
   dueDate: string
-  status: string
+  status: number
 }

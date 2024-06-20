@@ -1,76 +1,251 @@
 <body>
-  <h1></h1>
-  <div>
-    <div class="status-grid">
-      <div class="task-grid">
-        <h1>Pendente</h1>
+  <!-- Header div -->
+  <div class="flex flex-row justify-content-between">
+    <div class="flex flex-row align-items-center gap-3 title">
+      <p-button
+        icon="pi pi-arrow-left"
+        severity="secondary"
+        [rounded]="true"
+        [outlined]="true"
+        (click)="goToHome()"
+      />
+      <h1>{{ board.boardName }}</h1>
+    </div>
+    <div class="flex flex-row align-items-center gap-3">
+      <p-button
+        icon="pi pi-plus"
+        label="New Task"
+        severity="secondary"
+        [rounded]="true"
+        [outlined]="true"
+        iconPos="right"
+        (click)="newTask()"
+      />
+      <p-dropdown
+        [options]="filerOptions"
+        [(ngModel)]="filterValue"
+        optionLabel="name"
+        optionValue="code"
+        placeholder="Status"
+      />
+    </div>
+  </div>
+
+  <!-- Loading list progress spinner -->
+  <div class="card flex justify-content-center" *ngIf="loadingList">
+    <p-progressSpinner styleClass="w-6rem h-6rem" ariaLabel="loading" />
+  </div>
+
+  <!-- Status grid div -->
+  <div *ngIf="!loadingList" class="status-grid">
+    <!-- Pending tasks column -->
+    <div
+      *ngIf="filterValue === 0 || filterValue === 1"
+      class="pending-task-column"
+    >
+      <h1>Pending</h1>
+      <div *ngFor="let task of pendingList">
         <p-card
-          *ngFor="let task of board?.tasks"
           header="{{ task.title }}"
-          subheader="Prazo: {{ task.dueDate }}"
           [style]="{ width: '100%', height: '100%' }"
         >
+          <p-chip
+            label="{{ task.dueDate | date : 'dd/MM/yyyy' }}"
+            icon="pi pi-calendar-clock"
+          />
           <ng-template pTemplate="footer">
-            <div class="footer-buttons">
+            <div class="flex gap-3 mt-1 footer-button-card">
               <p-button
-                label="Open"
-                [style]="{ width: '100%' }"
-              />
-              <p-button
-                label="Edit"
+                icon="pi pi-pencil"
                 severity="secondary"
-                [style]="{ width: '100%' }"
-              />
-            </div>
-          </ng-template>
-        </p-card>
-      </div>
-      <div class="task-grid">
-        <h1>Em Progresso</h1>
-        <p-card
-          *ngFor="let task of board?.tasks"
-          header="{{ task.title }}"
-          subheader="Prazo: {{ task.dueDate }}"
-          [style]="{ width: '100%', height: '100%' }"
-        >
-          <ng-template pTemplate="footer">
-            <div class="footer-buttons">
-              <p-button
-                label="Open"
-                [style]="{ width: '100%' }"
+                [outlined]="true"
+                (click)="showTaskDialog(task)"
               />
               <p-button
-                label="Edit"
-                severity="secondary"
-                [style]="{ width: '100%' }"
+                icon="pi pi-trash"
+                severity="danger"
+                [outlined]="true"
+                (click)="showDeleteConfirmation($event, task)"
               />
-            </div>
-          </ng-template>
-        </p-card>
-      </div>
-      <div class="task-grid">
-        <h1>Concluída</h1>
-        <p-card
-          *ngFor="let task of board?.tasks"
-          header="{{ task.title }}"
-          subheader="Prazo: {{ task.dueDate }}"
-          [style]="{ width: '100%', height: '100%' }"
-        >
-          <ng-template pTemplate="footer">
-            <div class="footer-buttons">
-              <p-button
-                label="Open"
-                [style]="{ width: '100%' }"
-              />
-              <p-button
-                label="Edit"
-                severity="secondary"
-                [style]="{ width: '100%' }"
+
+              <!-- Delete progress Spinner div -->
+              <p-progressSpinner
+                *ngIf="deletingTask && task.id === idToDelete"
+                styleClass="w-3rem h-3rem"
+                ariaLabel="loading"
               />
             </div>
           </ng-template>
         </p-card>
       </div>
     </div>
+
+    <!-- In progress tasks column -->
+    <div
+      *ngIf="filterValue === 0 || filterValue === 2"
+      class="progress-task-column"
+    >
+      <h1>In Progress</h1>
+      <div *ngFor="let task of progressList">
+        <p-card
+          header="{{ task.title }}"
+          [style]="{ width: '100%', height: '100%' }"
+        >
+          <p-chip
+            label="{{ task.dueDate | date : 'dd/MM/yyyy' }}"
+            icon="pi pi-calendar-clock"
+          />
+          <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1 footer-button-card">
+              <p-button
+                icon="pi pi-pencil"
+                severity="secondary"
+                [outlined]="true"
+                (click)="showTaskDialog(task)"
+              />
+              <p-button
+                icon="pi pi-trash"
+                severity="danger"
+                [outlined]="true"
+                (click)="showDeleteConfirmation($event, task)"
+              />
+
+              <!-- Delete progress Spinner div -->
+              <p-progressSpinner
+                *ngIf="deletingTask && task.id === idToDelete"
+                styleClass="w-3rem h-3rem"
+                ariaLabel="loading"
+              />
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+
+    <!-- Done tasks column -->
+    <div
+      *ngIf="filterValue === 0 || filterValue === 3"
+      class="done-task-column"
+    >
+      <h1>Done</h1>
+      <div *ngFor="let task of doneList">
+        <p-card
+          header="{{ task.title }}"
+          [style]="{ width: '100%', height: '100%' }"
+        >
+          <p-chip
+            label="{{ task.dueDate | date : 'dd/MM/yyyy' }}"
+            icon="pi pi-calendar-clock"
+          />
+          <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1 footer-button-card">
+              <p-button
+                icon="pi pi-pencil"
+                severity="secondary"
+                [outlined]="true"
+                (click)="showTaskDialog(task)"
+              />
+              <p-button
+                icon="pi pi-trash"
+                severity="danger"
+                [outlined]="true"
+                (click)="showDeleteConfirmation($event, task)"
+              />
+
+              <!-- Delete progress Spinner div -->
+              <p-progressSpinner
+                *ngIf="deletingTask && task.id === idToDelete"
+                styleClass="w-3rem h-3rem"
+                ariaLabel="loading"
+              />
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete dialog -->
+  <p-confirmDialog />
+
+  <!-- Task dialog div -->
+  <div class="card flex justify-content-center dialog">
+    <p-dialog
+      [modal]="true"
+      [(visible)]="openTaskDialog"
+      [style]="{ width: '37.3rem', height: 'fit-content' }"
+    >
+      <!-- Saving task progress Spinner div -->
+      <div class="card flex justify-content-center" *ngIf="savingTask">
+        <p-progressSpinner styleClass="w-6rem h-6rem" ariaLabel="loading" />
+      </div>
+
+      <!-- Dialog content -->
+      <form [formGroup]="dialogData">
+        <div *ngIf="!savingTask" class="flex flex-column gap-4 mb-3">
+          <!-- Card name div -->
+          <div class="flex flex-row align-items-start gap-2">
+            <i class="pi pi-file" style="font-size: 1.25rem"></i>
+            <div class="flex flex-column gap-2">
+              <h3>Card Name</h3>
+              <input pInputText formControlName="title" (focus)="(true)" />
+            </div>
+          </div>
+
+          <!-- DueDate and Status div -->
+          <div class="flex flex-row gap-6 align-items-center">
+            <div class="flex flex-row align-items-start gap-2">
+              <i class="pi pi-calendar-clock" style="font-size: 1.25rem"></i>
+              <div class="flex flex-column gap-2">
+                <h3>Due Date</h3>
+                <p-calendar formControlName="dueDate" dateFormat="dd/mm/yy" />
+              </div>
+            </div>
+
+            <div class="flex flex-row align-items-start gap-2">
+              <i class="pi pi-check-circle" style="font-size: 1.25rem"></i>
+              <div class="flex flex-column gap-2">
+                <h3>Status</h3>
+                <p-dropdown
+                  [options]="statusOptions"
+                  formControlName="status"
+                  optionLabel="name"
+                  optionValue="code"
+                  placeholder="Status"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Editor div -->
+          <div>
+            <div class="flex flex-row align-items-start gap-2">
+              <i class="pi pi-book" style="font-size: 1.25rem"></i>
+              <div class="flex flex-column gap-2">
+                <h3>Description</h3>
+                <textarea
+                  rows="15"
+                  cols="50"
+                  pInputTextarea
+                  formControlName="desc"
+                >
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer div -->
+          <div class="flex justify-content-end gap-2">
+            <p-button
+              label="Cancel"
+              [outlined]="true"
+              severity="secondary"
+              (click)="resetFields()"
+            />
+            <p-button label="Save" (click)="saveTask()" />
+          </div>
+        </div>
+      </form>
+    </p-dialog>
   </div>
 </body>
