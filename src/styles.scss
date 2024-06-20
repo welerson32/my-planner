@@ -6,11 +6,6 @@
 @import 'primeflex/primeflex.scss';
 //----------------------------------------------------------------------------------------------
 
-//Import for Quill as a Editor field dependency.
-@import "../node_modules/quill/dist/quill.core.css";
-@import "../node_modules/quill/dist/quill.snow.css";
-//----------------------------------------------------------------------------------------------
-
 //Configurations to make the main body and sidebar wrap works.
 html,
 body {
