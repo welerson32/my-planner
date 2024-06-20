@@ -47,10 +47,10 @@ export class SidebarComponent implements OnInit {
       next: (res) => {
         this.loadBoards();
         this.resetFields();
-        this.goToHome();
         this.messages = [
           { severity: 'success', detail: 'Board created successfully!' },
         ];
+        window.location.reload();
       },
       error: (erro) => {
         this.resetFields();

@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
         this.messages = [
           { severity: 'success', detail: 'Board updated successfully!' },
         ];
+        window.location.reload();
       },
       error: (erro) => {
         this.resetFields();
@@ -81,6 +82,7 @@ export class HomeComponent implements OnInit {
         this.messages = [
           { severity: 'success', detail: 'Board deleted successfully!' },
         ];
+        window.location.reload();
       },
       error: (erro) => {
         this.deletingBoard = false;
