@@ -3,9 +3,28 @@ import { Board } from '../../Models/BoardModel';
 import { Router } from '@angular/router';
 import { BoardsService } from '../../Services/BoardsService/boards-service.service';
 import { Message } from 'primeng/api';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
+  imports: [
+    ProgressSpinnerModule,
+    MessagesModule,
+    ButtonModule,
+    DividerModule,
+    CommonModule,
+    InputTextModule,
+    FormsModule,
+    DialogModule
+  ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })

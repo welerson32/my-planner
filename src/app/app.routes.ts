@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
-import { BoardComponent } from './Pages/board/board.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //default route
-  { path: 'home', loadChildren: () => import('./Pages/home/home.module').then(m => m.HomeModule) },
-  { path: 'board/:id', loadChildren: () => import('./Pages/board/board.module').then(m => m.BoardModule) },
+  { path: 'home', loadComponent: () => import('./Pages/home/home.component').then(m => m.HomeComponent) },
+  { path: 'board/:id', loadComponent: () => import('./Pages/board/board.component').then(m => m.BoardComponent) },
 ];

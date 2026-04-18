@@ -5,11 +5,41 @@ import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/api';
 import { BoardsService } from '../../Services/BoardsService/boards-service.service';
 import { FilterOptions, Status, StatusOptions } from '../../Models/StatusModel';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TasksService } from '../../Services/TasksService/tasks-service.service';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
+import { ChipModule } from 'primeng/chip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MessagesModule } from 'primeng/messages';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-board',
+  standalone: true,
+  imports: [
+    ChipModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    CalendarModule,
+    InputTextareaModule,
+    ConfirmDialogModule,
+    ProgressSpinnerModule,
+    MessagesModule,
+    FormsModule,
+    InputTextModule,
+    DialogModule,
+    ButtonModule,
+    CardModule,
+    CommonModule
+  ],
+  providers: [ConfirmationService],
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })

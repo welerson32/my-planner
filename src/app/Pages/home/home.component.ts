@@ -3,9 +3,31 @@ import { Board } from '../../Models/BoardModel';
 import { Router } from '@angular/router';
 import { BoardsService } from '../../Services/BoardsService/boards-service.service';
 import { ConfirmationService, Message } from 'primeng/api';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [
+    ConfirmDialogModule,
+    ProgressSpinnerModule,
+    MessagesModule,
+    FormsModule,
+    InputTextModule,
+    DialogModule,
+    ButtonModule,
+    CardModule,
+    CommonModule
+  ],
+  providers: [ConfirmationService],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
