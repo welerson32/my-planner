@@ -3,7 +3,9 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { authConfig } from './auth/auth.config';
+import { provideAuth } from 'angular-auth-oidc-client';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes, withComponentInputBinding()), importProvidersFrom(BrowserAnimationsModule)],
+  providers: [provideRouter(routes, withComponentInputBinding()), importProvidersFrom(BrowserAnimationsModule), provideAuth(authConfig)],
 };
