@@ -5,5 +5,5 @@ export const environment = {
   COGNITO_CLIENT_ID: '3ulumjidr5h2o3eci29dqduj83',
   COGNITO_SCOPE: 'phone openid email',
   COGNITO_RESPONSE_TYPE: 'code',
-  COGNITO_REDIRECT_URL: 'https://my-planner-poc.netlify.app',
+  COGNITO_REDIRECT_URL: 'http://localhost:4200',
 };

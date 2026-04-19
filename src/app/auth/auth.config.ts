@@ -5,6 +5,7 @@ export const authConfig: PassedInitialConfig = {
   config: {
     authority: environment.COGNITO_URL,
     redirectUrl: environment.COGNITO_REDIRECT_URL,
+    postLogoutRedirectUri:environment.COGNITO_URL,
     clientId: environment.COGNITO_CLIENT_ID,
     scope: environment.COGNITO_SCOPE,
     responseType: environment.COGNITO_RESPONSE_TYPE
