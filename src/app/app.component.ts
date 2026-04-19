@@ -5,7 +5,7 @@ import { TasksService } from './Services/TasksService/tasks-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { SidebarComponent } from './UI';
 
 registerLocaleData(localePt);
 
