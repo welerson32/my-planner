@@ -1,16 +1,7 @@
-
-//Import for PrimeNG configs.
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeicons/primeicons.css";
-@import 'primeflex/primeflex.scss';
-//----------------------------------------------------------------------------------------------
-
 //Configurations to make the main body and sidebar wrap works.
 html,
 body {
   height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
