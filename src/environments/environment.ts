@@ -6,4 +6,4 @@ export const environment = {
   COGNITO_SCOPE: '',
   COGNITO_RESPONSE_TYPE: '',
   COGNITO_REDIRECT_URL: '',
-};;
+};
