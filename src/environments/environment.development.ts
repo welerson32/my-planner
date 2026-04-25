@@ -1,9 +1,9 @@
 export const environment = {
   production: false,
-  MOCK_API_URL: 'd',
-  COGNITO_URL: 'd',
-  COGNITO_CLIENT_ID: 'd',
-  COGNITO_SCOPE: 'd',
-  COGNITO_RESPONSE_TYPE: 'd',
-  COGNITO_REDIRECT_URL: 'd',
+  MOCK_API_URL: '',
+  COGNITO_URL: '',
+  COGNITO_CLIENT_I: '',
+  COGNITO_SCOPE: '',
+  COGNITO_RESPONSE_TYPE: '',
+  COGNITO_REDIRECT_URL: '',
 };
